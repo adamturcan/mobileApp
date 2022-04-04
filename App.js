@@ -29,8 +29,11 @@ export default function App() {
 
   return (
   
-
-      <ListingEditScreen/>    
+    // <SafeAreaView >
+    //   <ListItem title={"T1"} subTitle="D1" image={require('./images/mosh.jpg')}/>    
+    //   <ListItem title={"T2"} subTitle="D2" image={require('./images/mosh.jpg')}/>    
+    // </SafeAreaView>
+      <ListingEditScreen />
 
       
     

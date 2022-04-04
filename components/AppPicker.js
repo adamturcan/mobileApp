@@ -12,7 +12,7 @@ import AppPickerItem from './AppPickerItem'
 
 
 
-export default function AppPicker({icon,placeholder,onSelectItem,selectedItem,items,...otherProps}) {
+export default function AppPicker({numberOfColumns = 1,PickerItemComponent = AppPickerItem,icon,placeholder,onSelectItem,selectedItem,items,...otherProps}) {
 
 const [modalVisible,setModalVisible] =useState(false)
 
@@ -29,9 +29,10 @@ const [modalVisible,setModalVisible] =useState(false)
         <Screen>
         <Button title="Close" onPress={()=>setModalVisible(false)} />
         <FlatList
+        numColumns={numberOfColumns}
         data={items}
         keyExtractor={item=>item.value.toString()}
-        renderItem={({item})=><AppPickerItem label={item.label} onPress={()=>{
+        renderItem={({item})=><PickerItemComponent item={item} onPress={()=>{
         setModalVisible(false);
         onSelectItem(item)
         }
