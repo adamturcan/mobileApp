@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, Button, Platform, View, Dimensions, ImageBackground,Text, TextInput, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, SafeAreaView, Button, Platform, View, Dimensions, ImageBackground,Text, TextInput, TouchableWithoutFeedback, Alert, Image } from 'react-native';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
 import {MaterialCommunityIcons} from '@expo/vector-icons'
+import {Keyboard} from 'react-native'
+import * as ImagePicker from 'expo-image-picker'
+
 
 import WelcomeScreen from './screens/WelcomeScreen';
 import ViewImageScreen from './screens/ViewImageScreen';
@@ -20,20 +23,22 @@ import AppPicker from './components/AppPicker';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ListingEditScreen from './screens/ListingEditScreen'
-import {Keyboard} from 'react-native'
-
-
-export default function App() {
+import ImageInput from './components/ImageInput';
+import ImageInputList from './components/ImageInputList';
 
 
 
+export default  function App() {
+
+const [imageUris,setImageUris] = useState([null]);
+
+
+
+ 
   return (
-  
-    // <SafeAreaView >
-    //   <ListItem title={"T1"} subTitle="D1" image={require('./images/mosh.jpg')}/>    
-    //   <ListItem title={"T2"} subTitle="D2" image={require('./images/mosh.jpg')}/>    
-    // </SafeAreaView>
-      <ListingEditScreen />
+      <Screen>
+        <ImageInputList imageUris={imageUris} onImageAdd={uri=>setImageUris([uri,...imageUris])}/>
+      </Screen>
 
       
     
