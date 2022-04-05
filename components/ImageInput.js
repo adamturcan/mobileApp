@@ -4,12 +4,12 @@ import colors from '../config/colors'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import * as Permissions from 'expo-permissions'
-export default function ImageInput({imageUri,onImageSelect}) {
+export default function ImageInput({imageUri,onImageSelect,style}) {
     const requestPermission = async ()=>{
         const {granted} = await Permissions.askAsync(Permissions.CAMERA_ROLL)
         if(!granted){
           Alert.alert("Warning","you need to enable the permission to access the library")
-      
+       
         }
       }
       
@@ -26,7 +26,7 @@ const handlePress = ()=>{
        
     }
     else{
-        Alert.alert("Delete","Are you sure you want to delete this image",[{text:"Yes",onPress:()=>{onImageSelect(null)}},{text:"No"}])
+        Alert.alert("Delete","Are you sure you want to delete this image",[{text:"Yes",onPress:()=>{onImageSelect(imageUri)}},{text:"No"}])
     }
     
   
@@ -53,7 +53,7 @@ const handlePress = ()=>{
         
         <TouchableOpacity onPress={handlePress}>
             
-        <View style={styles.container}>
+        <View style={[styles.container,style]}>
             {!imageUri && <MaterialCommunityIcons name="camera" size={50} color={colors.medium} style={{alignSelf:"center"}}/>}
             {imageUri && <Image source={{uri:imageUri}} style={{width:100,height:100}}/>}
         </View>
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
       backgroundColor:colors.lightGray,
       borderRadius:25,
       justifyContent:"center",
-      overflow:"hidden"
+      overflow:"hidden",
+    
       
   }  
 })
