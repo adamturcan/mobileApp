@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker'
 import * as Permissions from 'expo-permissions'
 export default function ImageInput({imageUri,onImageSelect,style}) {
     const requestPermission = async ()=>{
-        const {granted} = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+        const {granted} = await ImagePicker.requestMediaLibraryPermissionsAsync()
         if(!granted){
           Alert.alert("Warning","you need to enable the permission to access the library")
        
@@ -26,7 +26,7 @@ const handlePress = ()=>{
        
     }
     else{
-        Alert.alert("Delete","Are you sure you want to delete this image",[{text:"Yes",onPress:()=>{onImageSelect(imageUri)}},{text:"No"}])
+        Alert.alert("Delete","Are you sure you want to delete this image",[{text:"Yes",onPress:()=>{onImageSelect(imageUri)}},{text:"No",onPress:()=>console.log("bla")}])
     }
     
   
@@ -42,6 +42,9 @@ const handlePress = ()=>{
           if(!result.cancelled) {
            
             onImageSelect(result.uri)
+          }
+          else{
+              
           } 
         } catch (error) {
           console.log("Error")

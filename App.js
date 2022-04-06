@@ -30,21 +30,12 @@ import ImageInputList from './components/ImageInputList';
 
 export default  function App() {
 
-const [imageUris,setImageUris] = useState([]);
 
-  const handleAdd = uri =>{
-    setImageUris([...imageUris,uri])
-  }
-  const handleRemove = uri =>{
-  
-    setImageUris(imageUris.filter((imageUri)=>imageUri !== uri))
-    console.log(imageUris)
-  }
  
   return (
-      <Screen>
-        <ImageInputList imageUris={imageUris} onRemoveImage={handleRemove} onImageAdd={handleAdd}/>
-      </Screen>
+      
+       <ListingEditScreen/>
+      
 
       
     

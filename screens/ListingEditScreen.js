@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View,  StyleSheet, Image,TouchableWithoutFeedback } from 'react-native'
 
 import *  as Yup from 'yup'
 
 import Screen from './Screen'
 
-import {Keyboard} from 'react-native'
 
+import {Keyboard} from 'react-native'
 
 
 
 import {AppForm,SubmitButton,AppFormField,AppFormPicker} from '../components/forms'
 import colors from '../config/colors'
 import CategoryPickerItem from '../components/CategoryPickerItem'
+import FormImageInputList from '../components/forms/FormImageInputList'
+import useLocation from '../hooks/useLocation'
 
 
 
@@ -20,9 +22,13 @@ const validationSchema = Yup.object().shape({
  title:Yup.string().required().label("Title"),
 price:Yup.number().required().min(1).max(10000).label("Price"),
 description:Yup.string().label("Description"),
-category:Yup.object().required().nullable().label("Category")
+category:Yup.object().required().nullable().label("Category"),
+images:Yup.array().min(1,"Please select at least one image").label("Images")
 
 })
+
+
+
 
 const categories =[
     {label:"Furniture",value:1, backgroundColor:"#fc5c65" ,icon:"floor-lamp"},
@@ -36,9 +42,9 @@ const categories =[
     {label:"other",value:9,backgroundColor:"gray" ,icon:"tab"},
     
 ]
-export default function LoginScreen() {
+export default function ListingEditScreen() {
 
-
+const location  = useLocation()
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -46,11 +52,11 @@ export default function LoginScreen() {
         
         <Screen >
             <AppForm
-            initialValues={{title:'',price:'',description:'',category:null,}}
-            onSubmit={values=>console.log(values)}
+            initialValues={{images:[],title:'',price:'',description:'',category:null,}}
+            onSubmit={values=>console.log(location)}
             validationSchema={validationSchema}
             >
-               
+            <FormImageInputList name="images" />
             <AppFormField  
             name="title"          
             autocCapitalize="none"
