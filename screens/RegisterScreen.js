@@ -22,7 +22,7 @@ password:Yup.string().required().min(4).label("Password"),
 
 })
 
-export default function LoginScreen() {
+export default function RegisterScreen({onRegister}) {
 
 
 
@@ -33,7 +33,7 @@ export default function LoginScreen() {
         <Screen >
             <AppForm
             initialValues={{name:'',email:'',password:''}}
-            onSubmit={values=>console.log(values)}
+            onSubmit={onRegister}
             validationSchema={validationSchema}
             >
                

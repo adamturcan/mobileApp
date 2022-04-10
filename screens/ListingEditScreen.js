@@ -44,7 +44,7 @@ const categories =[
 ]
 export default function ListingEditScreen() {
 
-const location  = useLocation()
+
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>

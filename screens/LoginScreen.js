@@ -1,5 +1,5 @@
 import React from 'react'
-import { View,  StyleSheet, Image,TouchableWithoutFeedback } from 'react-native'
+import { View,  StyleSheet, Image,TouchableWithoutFeedback} from 'react-native'
 
 import *  as Yup from 'yup'
 
@@ -20,7 +20,7 @@ email:Yup.string().required().email().label("Email"),
 password:Yup.string().required().min(4).label("Password")
 })
 
-export default function LoginScreen() {
+export default function LoginScreen({onLogin }) {
 
 
 
@@ -31,7 +31,7 @@ export default function LoginScreen() {
         <Screen >
             <AppForm
             initialValues={{email:'',password:''}}
-            onSubmit={values=>console.log(values)}
+            onSubmit={onLogin}
             validationSchema={validationSchema}
             >
                <Image style={styles.logo} source={require('../images/logo-red.png')}/>
