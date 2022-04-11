@@ -1,10 +1,12 @@
 import { useNavigation } from '@react-navigation/core'
 import React from 'react'
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
 import { View, Text } from 'react-native'
 import LoginScreen from '../screens/LoginScreen'
 import WelcomeScreen from '../screens/WelcomeScreen'
 import RegisterScreen from '../screens/RegisterScreen'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import MainNavigation from './mainNavigation'
 import Screen from '../screens/Screen'

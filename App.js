@@ -35,7 +35,7 @@ import navigationTheme from './navigation/navigationTheme';
 export default  function App() {
 return (
   <NavigationContainer theme={navigationTheme}>
-    <AuthNavigation/>
+    <MainNavigation/>
   </NavigationContainer>
 )
 }

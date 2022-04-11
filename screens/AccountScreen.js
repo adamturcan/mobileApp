@@ -6,6 +6,8 @@ import ListItem from '../components/ListItem'
 import colors from '../config/colors'
 import Icon from '../components/Icon'
 import ListItemSeparator from '../components/ListItemSeparator'
+import MessagesScreen from './MessagesScreen'
+import routes from '../navigation/routes'
 
 const menuItems =[
     {
@@ -20,12 +22,13 @@ const menuItems =[
         icon:{
             name:"email",
             backgroundColor:colors.secondary
-        }
+        },
+        targetScreen:routes.MESSAGES_SCREEN
     }
 ]
 
-export default class AccountScreen extends Component {
-  render() {
+export default  function AccountScreen({navigation}){
+ 
     return (
         <Screen style={styles.screen}>
 
@@ -36,7 +39,7 @@ export default class AccountScreen extends Component {
                 <FlatList data={menuItems}
                 keyExtractor={menuItem=>menuItem.title}
                 renderItem={({item})=>(
-                    <ListItem title={item.title} IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>} />
+                    <ListItem title={item.title} IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />} onPress={()=>navigation.navigate(item.targetScreen)}/>
                 )}
                 ItemSeparatorComponent={ListItemSeparator}
                 />
@@ -51,7 +54,7 @@ export default class AccountScreen extends Component {
 
         </Screen>
     )
-  }
+
 }
 const styles = StyleSheet.create({
     container:{

@@ -7,7 +7,7 @@ import colors from '../config/colors'
 
 export default function ListItem({title,subTitle,image,IconComponent,onPress,renderRightActions}) {
   return (
-      <Swipeable renderRightActions={renderRightActions}>
+      <Swipeable renderRightActions={renderRightActions} containerStyle={{overflow:"visible"}} >
       <TouchableHighlight onPress={onPress}
       underlayColor={"#f9f4f4"}
       >
@@ -17,7 +17,8 @@ export default function ListItem({title,subTitle,image,IconComponent,onPress,ren
       <View style={{
           flex:1,
           marginLeft:10,
-          justifyContent:"center"
+          justifyContent:"center",
+          overflow:"visible"
          
       }}>
           <Text numberOfLines={1} style={styles.title}>{title}</Text>
@@ -34,7 +35,8 @@ const styles = StyleSheet.create({
     container:{
         flexDirection:"row",
         padding:15,
-        backgroundColor:"#fff"
+        backgroundColor:"#fff",
+        overflow:"visible"
     
     },
     image:{

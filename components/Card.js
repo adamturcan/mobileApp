@@ -1,11 +1,12 @@
 import { View, Text,StyleSheet,Image } from 'react-native'
 import React from 'react'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
-export default function Card({title,subTitle,image}) {
+export default function Card({title,subTitle,imageUrl, onPress}) {
   return (
- 
+ <TouchableWithoutFeedback onPress={onPress}>
      <View style={styles.card}>
-         <Image style={styles.image} source={image}/>
+         <Image style={styles.image} source={{uri:imageUrl}}/>
          <View style={{
              margin:15
          }}>
@@ -15,7 +16,7 @@ export default function Card({title,subTitle,image}) {
          </View>
          
      </View>
-      
+    </TouchableWithoutFeedback>
    
   )
 }
