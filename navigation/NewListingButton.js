@@ -15,7 +15,7 @@ export default function NewListingButton({onPress}) {
 }
 
   return (
-      <TouchableOpacity onPress={()=>loadListings()}>
+      <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>
         <MaterialCommunityIcons name="plus-circle" color={colors.white} size={40}/>
     </View>
